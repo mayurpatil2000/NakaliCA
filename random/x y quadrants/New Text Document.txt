@@ -1,0 +1,23 @@
+# Get input from the user
+x = float(input("Enter the x-coordinate: "))
+y = float(input("Enter the y-coordinate: "))
+
+# Determine the quadrant
+if x > 0 and y > 0:
+    quadrant = "Quadrant I"
+elif x < 0 and y > 0:
+    quadrant = "Quadrant II"
+elif x < 0 and y < 0:
+    quadrant = "Quadrant III"
+elif x > 0 and y < 0:
+    quadrant = "Quadrant IV"
+elif x == 0 and y != 0:
+    quadrant = "On the y-axis"
+elif x != 0 and y == 0:
+    quadrant = "On the x-axis"
+else:
+    quadrant = "At the origin"
+
+# Print the result
+print(f"The point ({x}, {y}) is in {quadrant}.")
+

@@ -1,0 +1,25 @@
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataset
+file_path = "Salary_Data.csv"
+df = pd.read_csv("Salary_Data.csv")
+
+# Scatter plot for Age and Salary
+plt.figure(figsize=(10, 6))
+plt.scatter(df['Age'], df['Salary'], color='blue', alpha=0.7)
+plt.title('Scatter Plot for Age and Salary')
+plt.xlabel('Age')
+plt.ylabel('Salary')
+plt.grid(True)
+plt.show()
+
+# Histogram for Salary
+plt.figure(figsize=(10, 6))
+plt.hist(df['Salary'], bins=20, color='green', edgecolor='black')
+plt.title('Histogram for Salary')
+plt.xlabel('Salary')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()

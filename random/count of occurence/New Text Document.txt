@@ -1,0 +1,22 @@
+def count_word_occurrences_recursive(word_list, word_count={}):
+    if not word_list:
+        return word_count
+
+    # Convert the word to lowercase to ensure case-insensitive counting
+    current_word = word_list[0].lower()
+
+    # Update the count in the dictionary
+    word_count[current_word] = word_count.get(current_word, 0) + 1
+
+    # Recursive call for the rest of the words
+    return count_word_occurrences_recursive(word_list[1:], word_count)
+
+# Example usage
+user_string = input("Enter a string: ")
+words = user_string.split(" ")
+result = count_word_occurrences_recursive(words)
+
+# Display the word occurrences
+print("\nWord occurrences in the string:")
+for word, count in result.items():
+    print(f"{word}: {count}")

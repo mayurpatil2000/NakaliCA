@@ -1,0 +1,30 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+# Load the dataset
+
+data = pd.read_csv("income.csv")
+
+# Select relevant columns for clustering (e.g., 'age' and 'income_level')
+# You may want to choose different columns based on your specific use case
+selected_columns = ['age', 'income_level']
+cluster_data = data[selected_columns]
+
+# Standardize the data
+scaler = StandardScaler()
+cluster_data_scaled = scaler.fit_transform(cluster_data)
+
+# Apply KMeans clustering
+kmeans = KMeans(n_clusters=3, random_state=42)  # You can adjust the number of clusters
+data['cluster'] = kmeans.fit_predict(cluster_data_scaled)
+
+# Visualize the clusters using a scatter plot
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='age', y='income_level', hue='cluster', data=data, palette='viridis', alpha=0.8)
+plt.title('Clustering Results - Scatter Plot')
+plt.xlabel('Age')
+plt.ylabel('Income Level')
+plt.show()

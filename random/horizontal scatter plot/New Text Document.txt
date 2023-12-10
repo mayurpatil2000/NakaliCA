@@ -1,0 +1,27 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Generating random data for demonstration
+np.random.seed(42)
+categories = ['Category A', 'Category B', 'Category C', 'Category D']
+values = np.random.randint(10, 100, size=len(categories))
+x_values = np.random.rand(len(categories)) * 100  # Random x-coordinates for scatter plot
+
+# 1. Draw a horizontal bar graph
+plt.figure(figsize=(10, 6))
+plt.barh(categories, values, color='skyblue')
+plt.xlabel('Values')
+plt.ylabel('Categories')
+plt.title('Horizontal Bar Graph')
+plt.grid(axis='x')
+plt.show()
+
+# 2. Draw a scatter plot diagram
+plt.figure(figsize=(10, 6))
+plt.scatter(x_values, values, color='green', alpha=0.7)
+plt.xlabel('X Values')
+plt.ylabel('Values')
+plt.title('Scatter Plot Diagram')
+plt.grid(True)
+plt.show()
+

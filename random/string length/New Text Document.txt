@@ -1,0 +1,12 @@
+def string_length_recursive(input_str):
+    # Base case: if the string is empty, its length is 0
+    if not input_str:
+        return 0
+    # Recursive case: reduce the problem by removing the first character
+    else:
+        return 1 + string_length_recursive(input_str[1:])
+
+# Example usage
+user_input = input("Enter a string: ")
+length = string_length_recursive(user_input)
+print(f"The length of the string is: {length}")

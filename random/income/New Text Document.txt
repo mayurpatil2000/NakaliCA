@@ -1,0 +1,33 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Load the dataset
+file_path = "income.csv"
+df = pd.read_csv(r"income.csv")
+
+
+# Assuming your dataset has numerical features for clustering
+# Replace 'feature1' and 'feature2' with actual column names from your dataset
+X = df[['age', 'income_level']]
+
+# Specify the number of clusters
+num_clusters = 3
+
+# Apply KMeans clustering
+kmeans = KMeans(n_clusters=num_clusters, random_state=42)
+df['cluster'] = kmeans.fit_predict(X)
+
+# Scatter plot for the clustered data
+plt.figure(figsize=(10, 6))
+for cluster in range(num_clusters):
+    cluster_data = df[df['cluster'] == cluster]
+    plt.scatter(cluster_data['age'], cluster_data['income_level'], label=f'Cluster {cluster + 1}')
+
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], marker='X', s=200, c='red', label='Centroids')
+plt.title('KMeans Clustering')
+plt.xlabel('age')
+plt.ylabel('income_level')
+plt.legend()
+plt.show()
+

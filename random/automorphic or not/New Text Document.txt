@@ -1,0 +1,20 @@
+def is_automorphic(number):
+    square = number ** 2
+    str_number = str(number)
+    str_square = str(square)
+
+    # Check if the square ends with the same digits as the number
+    return str_square.endswith(str_number)
+
+# Get input from the user
+try:
+    user_input = int(input("Enter a number: "))
+except ValueError:
+    print("Please enter a valid integer.")
+    exit()
+
+# Check if the number is automorphic
+if is_automorphic(user_input):
+    print(f"{user_input} is an Automorphic number.")
+else:
+    print(f"{user_input} is not an Automorphic number.")
